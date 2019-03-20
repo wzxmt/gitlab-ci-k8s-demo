@@ -57,22 +57,15 @@ compile:
 
 image_build:
   stage: release
-  variables:
-    DOCKER_HOST: tcp://localhost:2375
-    CERTS_PATH: /etc/docker/certs.d/${CI_REGISTRY}
   image:
     name: docker:latest
     entrypoint: ["/bin/sh", "-c"]
-    entrypoint: []
-    command:
-      - /bin/sh
-      - -c
-      - |
-          mkdir -p $CERTS_PATH
-          wget -O - http://sdn.haimaxy.com/k8s/ca.crt > $CERTS_PATH/ca.crt || exit
-          dockerd-entrypoint.sh || exit
+  variables:
+    DOCKER_HOST: tcp://localhost:2375
+    CERTS_PATH: /etc/docker/certs.d/${CI_REGISTRY}
   services:
-  - name: docker:dind
+    - name: docker:dind
+      command: ["--insecure-registry=registry.qikqiak.com"]
   script:
     - ls -la $CERTS_PATH
     - docker info
