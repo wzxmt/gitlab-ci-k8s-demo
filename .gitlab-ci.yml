@@ -69,8 +69,10 @@ image_build:
       - /bin/sh
       - -c
       - |
+          apk update && apk add ca-certificates
           mkdir -p $CERTS_PATH
           wget -O - http://sdn.haimaxy.com/k8s/ca.crt > $CERTS_PATH/ca.crt || exit
+          update-ca-certificates || exit
           dockerd-entrypoint.sh || exit
   script:
     - ls -la $CERTS_PATH
