@@ -46,9 +46,10 @@ image_build:
   image: docker:latest
   variables:
     DOCKER_HOST: tcp://localhost:2375
+    CI_REGISTRY: ${CI_REGISTRY}
   services:
     - name: docker:17.03-dind
-      command: ["--insecure-registry=${CI_REGISTRY}"]
+      command: ["--insecure-registry=$CI_REGISTRY"]
   script:
     - docker info
     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
