@@ -64,10 +64,15 @@ image_build:
     DOCKER_HOST: tcp://localhost:2375
     CERTS_PATH: /etc/docker/certs.d/${CI_REGISTRY}
   services:
-    - docker:dind
-  before_script:
-    - apk update && apk add ca-certificates
-    - mkdir -p $CERTS_PATH && wget -O - http://sdn.haimaxy.com/k8s/ca.crt > $CERTS_PATH/ca.crt && update-ca-certificates
+  - name: docker:dind
+    entrypoint: []
+    command:
+      - /bin/sh
+      - -c
+      - |
+          mkdir -p $CERTS_PATH
+          wget -O - http://sdn.haimaxy.com/k8s/ca.crt > $CERTS_PATH/ca.crt || exit
+          dockerd-entrypoint.sh || exit
   script:
     - ls -la $CERTS_PATH
     - docker info
