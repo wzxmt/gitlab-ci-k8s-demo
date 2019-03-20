@@ -58,11 +58,10 @@ compile:
 image_build:
   stage: release
   image:
-    name: docker:latest
+    name: docker:stable
     entrypoint: ["/bin/sh", "-c"]
   variables:
     DOCKER_HOST: tcp://localhost:2375
-    CERTS_PATH: /etc/docker/certs.d/${CI_REGISTRY}
   services:
     - name: docker:dind
       command: ["--insecure-registry=registry.qikqiak.com"]
