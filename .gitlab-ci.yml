@@ -65,6 +65,7 @@ image_build:
   services:
     - docker:dind
   before_script:
+    - apk update && apk add ca-certificates && update-ca-certificates && apk add openssl
     - mkdir -p /etc/docker/certs.d/${CI_REGISTRY} && wget -O - https://${CI_REGISTRY}/api/systeminfo/getcert --no-check-certificate > /etc/docker/certs.d/${CI_REGISTRY}/ca.crt
   script:
     - docker info
