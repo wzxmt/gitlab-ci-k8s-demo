@@ -43,7 +43,7 @@ compile:
 
 image_build:
   stage: release
-  image: cnych/kubectl
+  image: docker:latest
   variables:
     DOCKER_HOST: tcp://localhost:2375
   services:
