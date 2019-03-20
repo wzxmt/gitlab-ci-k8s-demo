@@ -63,7 +63,15 @@ image_build:
   variables:
     DOCKER_HOST: tcp://localhost:2375
   services:
-    - docker:dind
+  - name: docker:dind
+    command:
+      - /bin/sh
+      - -c
+      - |
+          apk update && apk add openssl
+          mkdir -p /etc/docker/certs.d/${CI_REGISTRY_IMAGE}
+          wget -O - https://registry.qikqiak.com/api/systeminfo/getcert --no-check-certificate > /etc/docker/certs.d/${CI_REGISTRY_IMAGE}/ca.crt || exit
+          dockerd-entrypoint.sh || exit
   script:
     - docker info
     - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" "${CI_REGISTRY}"
