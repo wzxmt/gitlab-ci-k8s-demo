@@ -58,12 +58,12 @@ compile:
 image_build:
   stage: release
   image:
-    name: docker:18.06.3-ce
+    name: docker:stable
     entrypoint: ["/bin/sh", "-c"]
   variables:
     DOCKER_HOST: tcp://localhost:2375
   services:
-    - name: docker:dind
+    - name: docker:18.06-dind
       command: ["--insecure-registry=registry.qikqiak.com"]
   script:
     - docker info
