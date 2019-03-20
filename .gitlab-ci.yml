@@ -63,7 +63,7 @@ image_build:
   variables:
     DOCKER_HOST: tcp://localhost:2375
   services:
-    - name: docker:18.06-dind
+    - name: docker:17.03-dind
       command: ["--insecure-registry=registry.qikqiak.com"]
   script:
     - docker info
