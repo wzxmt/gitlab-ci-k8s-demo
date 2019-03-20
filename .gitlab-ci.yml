@@ -58,7 +58,7 @@ compile:
 image_build:
   stage: release
   image:
-    name: docker:stable
+    name: docker:18.06.3-ce
     entrypoint: ["/bin/sh", "-c"]
   variables:
     DOCKER_HOST: tcp://localhost:2375
