@@ -3,6 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: presentation-gitlab-k8s-__CI_ENVIRONMENT_SLUG__
+  namespace: gitlab
   labels:
     app: presentation-gitlab-k8s
     ref: __CI_ENVIRONMENT_SLUG__

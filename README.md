@@ -1,8 +1,8 @@
-# presentation-gitlab-k8s
+# gitdemo-k8s
 
 These are the example files for my presentation about GitLab + Kubernetes for Continuous Integration and Delivery. They are also partly used in my GitLab CI posts.
 
-![Kubernetes and GitLab](/media/kubernetes-and-gitLab.png)
+![Kubernetes and GitLab](https://ws4.sinaimg.cn/large/006tKfTcgy1g19jrkx42pj30i20a6dgs.jpg)
 
 **INFO** This isn't the best way to deploy application Docker images to K8s, this is more of an example how simple it can be.
 
