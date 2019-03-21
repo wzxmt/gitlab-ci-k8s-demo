@@ -29,7 +29,7 @@ This repository shows off/uses the following GitLab CI features:
     * [Manual CI Steps](https://docs.gitlab.com/ce/ci/yaml/#when-manual)
     * [Artifacts](https://docs.gitlab.com/ce/user/project/pipelines/job_artifacts.html)
     * [App review](https://docs.gitlab.com/ce/ci/review_apps/index.html)
-* [GitLab Container Registry](https://docs.gitlab.com/ce/user/project/container_registry.html)
+* [Harbor Container Registry](https://goharbor.io)
 * [GitLab CI Kubernetes Cluster Integration](https://docs.gitlab.com/ce/user/project/clusters/index.html)
 
 Other features also shown are:
