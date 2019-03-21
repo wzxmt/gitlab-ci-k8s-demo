@@ -3,9 +3,6 @@
 
 ![Kubernetes and GitLab](https://ws4.sinaimg.cn/large/006tKfTcgy1g19jrkx42pj30i20a6dgs.jpg)
 
->
-**INFO** This isn't the best way to deploy application Docker images to K8s, this is more of an example how simple it can be.
-
 Gitlab CI + Kubernetes 关于 CI/CD 的一个示例。在博客中有几篇文章专门来介绍关于 Gitlab CI 的：
 
 * [1. 在 Kubernetes 在快速安装 Harbor](https://www.qikqiak.com/post/harbor-quick-install/)
@@ -42,7 +39,7 @@ Other features also shown are:
 
 The following points are required for this repository to work correctly:
 * GitLab (`>= 11.3`) with the following features configured:
-    * [Container Registry](https://docs.gitlab.com/ce/user/project/container_registry.html)
+    * [Harbor](https://goharbor.io)
     * [GitLab CI](https://about.gitlab.com/features/gitlab-ci-cd/) (with working [GitLab CI Runners](https://docs.gitlab.com/ce/ci/runners/), at least version `>= 11.3`)
 * [Kubernetes](https://kubernetes.io/) cluster
     * You need to be "bound" to the `admin` (`cluster-admin`) ClusterRole, see [Kubernetes.io Using RBAC Authorization - User-facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles).
