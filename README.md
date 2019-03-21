@@ -8,6 +8,7 @@ Gitlab CI + Kubernetes 关于 CI/CD 的一个示例。在博客中有几篇文�
 * [1. 在 Kubernetes 在快速安装 Harbor](https://www.qikqiak.com/post/harbor-quick-install/)
 * [2. 在 Kubernetes 上安装 Gitlab](https://www.qikqiak.com/post/gitlab-install-on-k8s/)
 * [3. 在 Kubernetes 上安装 Gitlab CI Runner](https://www.qikqiak.com/post/gitlab-runner-install-on-k8s/)
+* [4. Gitlab CI 与 Kubernetes 的结合](https://www.qikqiak.com/post/gitlab-ci-k8s-cluster-feature/)
 
 
 ## Table of Contents
