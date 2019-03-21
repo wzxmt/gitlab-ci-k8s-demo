@@ -66,7 +66,7 @@ deploy_review:
   except:
     - tags
   environment:
-    name: dev
+    name: review/$CI_BUILD_REF_NAME
     url: https://$CI_ENVIRONMENT_SLUG-gitlab-k8s-demo.qikqiak.com
     on_stop: stop_review
   script:
