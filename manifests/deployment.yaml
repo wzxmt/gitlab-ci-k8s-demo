@@ -2,30 +2,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: presentation-gitlab-k8s-__CI_ENVIRONMENT_SLUG__
+  name: gitlab-k8s-demo-__CI_ENVIRONMENT_SLUG__
   namespace: gitlab
   labels:
-    app: presentation-gitlab-k8s
+    app: gitlab-k8s-demo
     ref: __CI_ENVIRONMENT_SLUG__
     track: stable
 spec:
   replicas: 2
   selector:
     matchLabels:
-      app: presentation-gitlab-k8s
+      app: gitlab-k8s-demo
       ref: __CI_ENVIRONMENT_SLUG__
   template:
     metadata:
       labels:
-        app: presentation-gitlab-k8s
+        app: gitlab-k8s-demo
         ref: __CI_ENVIRONMENT_SLUG__
         track: stable
     spec:
       imagePullSecrets:
-        - name: regsecret
+        - name: myregistry
       containers:
       - name: app
-        image: registry.zerbytes.net/atrost/presentation-gitlab-k8s:__VERSION__
+        image: registry.qikqiak.com/gitdemo/gitlab-k8s:__VERSION__
         imagePullPolicy: Always
         ports:
         - name: http-metrics
