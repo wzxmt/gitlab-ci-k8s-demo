@@ -9,9 +9,9 @@ image:
 # repository in /go/src/mydomainperso.com/repos/projectname
 # Thus, making a symbolic link corrects this.
 before_script:
-  - mkdir -p "/go/src/git.qikqiak.com/${CI_PROJECT_NAMESPACE}"
-  - ln -sf "${CI_PROJECT_DIR}" "/go/src/git.qikqiak.com/${CI_PROJECT_PATH}"
-  - cd "/go/src/git.qikqiak.com/${CI_PROJECT_PATH}/"
+  - mkdir -p "/go/src/gitlab.wzxmt.com/${CI_PROJECT_NAMESPACE}"
+  - ln -sf "${CI_PROJECT_DIR}" "/go/src/gitlab.wzxmt.com/${CI_PROJECT_PATH}"
+  - cd "/go/src/gitlab.wzxmt.com/${CI_PROJECT_PATH}/"
 
 stages:
   - test
@@ -49,10 +49,10 @@ image_build:
     DOCKER_HOST: tcp://localhost:2375
   services:
     - name: docker:17.03-dind
-      command: ["--insecure-registry=registry.qikqiak.com"]
+      command: ["--insecure-registry=registry.wzxmt.com"]
   script:
     - docker info
-    - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" registry.qikqiak.com
+    - docker login -u "${CI_REGISTRY_USER}" -p "${CI_REGISTRY_PASSWORD}" registry.wzxmt.com
     - docker build -t "${CI_REGISTRY_IMAGE}:latest" .
     - docker tag "${CI_REGISTRY_IMAGE}:latest" "${CI_REGISTRY_IMAGE}:${CI_COMMIT_REF_NAME}"
     - test ! -z "${CI_COMMIT_TAG}" && docker push "${CI_REGISTRY_IMAGE}:latest"
@@ -67,7 +67,7 @@ deploy_review:
     - tags
   environment:
     name: dev
-    url: https://dev-gitlab-k8s-demo.qikqiak.com
+    url: https://dev-gitlab-k8s-demo.wzxmt.com
     on_stop: stop_review
   script:
     - kubectl version
@@ -110,7 +110,7 @@ deploy_live:
   stage: deploy
   environment:
     name: live
-    url: https://live-gitlab-k8s-demo.qikqiak.com
+    url: https://live-gitlab-k8s-demo.wzxmt.com
   only:
     - tags
   when: manual

@@ -11,7 +11,7 @@ metadata:
     kubernetes.io/ingress.class: "traefik"
 spec:
   rules:
-  - host: __CI_ENVIRONMENT_SLUG__-gitlab-k8s-demo.qikqiak.com
+  - host: __CI_ENVIRONMENT_SLUG__-gitlab-k8s-demo.wzxmt.com
     http:
       paths:
       - path: /
