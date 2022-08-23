@@ -63,7 +63,7 @@ deploy_review:
   script:
     - kubectl version
     - cd manifests/
-    - sh pullsecrets.sh
+    - kubectl create secret docker-registry myregistry --docker-server=$CI_REGISTRY --docker-username=$CI_REGISTRY_USER --docker-password=$CI_REGISTRY_PASSWORD -n kube-ops
     - sed -i "s/__CI_ENVIRONMENT_SLUG__/${CI_ENVIRONMENT_SLUG}/" deployment.yaml ingress.yaml service.yaml
     - sed -i "s/__VERSION__/${CI_COMMIT_REF_NAME}/" deployment.yaml ingress.yaml service.yaml
     - |
